@@ -1,12 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CatsController } from './cats/cats.controller';
-import { CatsService } from './cats/cats.service';
+import { CatsModule } from './cats/cats.module';
 
+/**
+ * 模块最好按组件划分
+ */
 @Module({
-  imports: [],
-  controllers: [AppController, CatsController], // controller 得被挂到一个module上
-  providers: [AppService, CatsService],
+  imports: [CatsModule], // 引入模块的列表，这些模块输出了该模块中使用的部分provider
 })
 export class AppModule {}
